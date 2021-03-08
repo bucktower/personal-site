@@ -1,191 +1,315 @@
-import Head from 'next/head'
+import Head from "next/head";
+import InstaGrid from "../components/InstaGrid";
 
 export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Buck Tower</title>
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"
+        />
+
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous"
+        />
+
+        <link
+          href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Hairline"
+          rel="stylesheet"
+        />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.8.1/holder.min.js"></script>
+        <script
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"
+        ></script>
+        <script src="legacy-js/InstagramFeed.min.js"></script>
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+        <object type="image/svg+xml" data="/bucklogo.svg" width="200">
+          Your browser does not support SVG
+        </object>
+        <h1>Buck Tower</h1>
+        <script src="https://use.fontawesome.com/d99d1b5e9b.js"></script>
+        <div class="social-media-icons">
+          <a href="https://twitter.com/bucktower">
+            <i class="fa fa-twitter"></i>
           </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a href="https://github.com/bucktower">
+            <i class="fa fa-github"></i>
           </a>
-
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://zeit.co/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with ZEIT Now.
-            </p>
+          <a href="https://medium.com/@bucktower">
+            <i class="fa fa-medium"></i>
           </a>
         </div>
+        <p>
+          I study computer science at
+          <a href="https://www.cs.utexas.edu/">
+            The University of Texas at Austin
+          </a>
+          . Cooking, music, aviation.
+        </p>
+        <h2>
+          <i class="fa fa-wrench"></i>
+        </h2>
+        <div class="row center">
+          <br />
+          <a
+            class="twitter-timeline"
+            data-width="600"
+            data-height="500"
+            data-theme="dark"
+            href="https://twitter.com/bucktower?ref_src=twsrc%5Etfw"
+          >
+            Tweets by bucktower
+          </a>{" "}
+          <script
+            async
+            src="https://platform.twitter.com/widgets.js"
+            charset="utf-8"
+          ></script>
+        </div>
+
+        {/* <h2>
+          <i class="fa fa-camera-retro"></i>
+          <InstaGrid account="bucktower" numberOfMediaElements={9} />
+        </h2>
+        <div class="row center">
+          <br />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div id="instagram-feed1" style={{ maxWidth: "800px" }}></div>
+          </div>
+        </div>
+        <br /> */}
+
+        <h2>
+          <i class="fa fa-music"></i>
+        </h2>
+        <iframe
+          src="https://open.spotify.com/embed/playlist/7GCHvOJnQTFiVNLVWMBIGt"
+          max-width="100%"
+          width="1000"
+          height="380"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+        {/* <br />
+        <br />
+        <iframe
+          style={{
+            width: "100%",
+            maxWidth: "1000px",
+            border: "0px #000000 solid",
+          }}
+          src="https://listsfm-react.herokuapp.com/tower-family/3month"
+          height="500"
+          width="100%"
+        ></iframe> */}
+
+        <h2>
+          <i class="fa fa-briefcase"></i>
+        </h2>
+        <br />
+        <iframe
+          style={{
+            width: "100%",
+            maxWidth: "1000px",
+            border: "0px #000000 solid",
+          }}
+          src="https://docs.google.com/viewer?srcid=1KE-nOFkxk8b9XXEjulYgLPBdGFfAJDLTHFrh0J2tVgQ&pid=explorer&efh=false&a=v&chrome=false&embedded=true"
+          width="100%"
+          height="480px"
+        ></iframe>
+
+        <h2>
+          <i class="fa fa-globe"></i>
+        </h2>
+        <br />
+        <iframe
+          style={{
+            width: "100%",
+            maxWidth: "1000px",
+            border: "0px #000000 solid",
+          }}
+          src="https://www.google.com/maps/d/u/0/embed?mid=1vFW6RTZZd-bxhY638mS1IZlwzgI"
+          width="100%"
+          height="480"
+        ></iframe>
       </main>
 
       <footer>
-        <a
-          href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
-        </a>
+        <h3>
+          <i class="fa fa-twitter"></i>
+        </h3>
+        <p id="follow">
+          Follow me <a href="https://twitter.com/bucktower">@bucktower</a> for
+          more updates
+        </p>
+
+        <h4>
+          <a href="https://github.com/bucktower/bucktower.github.com">
+            <i class="fa fa-code"></i>
+          </a>
+        </h4>
       </footer>
 
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+      <style jsx global>{`
+        :root {
+          --animation-time: 6s;
         }
 
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        iframe {
+          border: 0;
         }
 
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        body {
+          text-align: center;
+          background: #413233;
+          /* background: #413233; */
+          /* background: #ffffff url(../media/bg.jpg) top center */
         }
-
-        footer img {
-          margin-left: 0.5rem;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: "Bungee Hairline", monospace;
+          color: white;
         }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        p,
+        div {
+          font-family: "Bungee Hairline", monospace;
+          font-weight: 200;
+          font-size: 20px;
+        }
+        .social-media-icons a {
+          font-size: 28px;
+          color: #dbd1b6;
         }
 
         a {
-          color: inherit;
+          color: white;
+        }
+
+        a:hover {
+          color: grey;
+        }
+
+        #follow {
+          color: grey;
+        }
+
+        #main {
+          /* background: white; */
+          /* border: 10px black solid; */
+          margin: 30px;
+          padding: 35px;
+          padding-top: 0px;
+          color: "white";
+          // color: #dbd1b6;
+          /* color: #DBD1B6; */
+        }
+
+        a:hover {
           text-decoration: none;
         }
 
-        .title a {
-          color: #0070f3;
+        a:active {
           text-decoration: none;
         }
 
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
+        button .retro-btn {
+          margin: 2px 2px 2px 0;
+          /* float:right; */
+          width: 14px;
+          height: 13.5px;
+          background: #c0c0c0;
+          border-width: 1px;
+          border-color: #ffffff #808080 #808080 #ffffff;
+          padding: 0;
+          font-size: 9px;
+          font-weight: bold;
+          font-family: Tahoma;
           text-align: center;
+          focus: none;
         }
 
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
+        button:focus {
+          outline: none;
         }
 
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
+        @keyframes float {
+          0% {
+            /* box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); */
+            transform: translatey(0px);
           }
+          50% {
+            /* box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2); */
+            transform: translatey(-20px);
+          }
+          100% {
+            /* box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); */
+            transform: translatey(0px);
+          }
+        }
+
+        .box {
+          animation: float var(--animation-time) ease-in-out infinite;
+        }
+
+        #instagram {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          align-text: center;
+          margin: auto;
+        }
+
+        #instagram li {
+          list-style: none;
+          float: left;
+          margin: 0 20px 20px 0;
         }
       `}</style>
 
-      <style jsx global>{`
+      {/* <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -198,7 +322,7 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
-      `}</style>
+      `}</style> */}
     </div>
-  )
+  );
 }
