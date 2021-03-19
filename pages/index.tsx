@@ -1,11 +1,52 @@
 import Head from "next/head";
-import InstaGrid from "../components/InstaGrid";
+import { useEffect, useState } from "react";
+import { WorkItem } from "../components/WorkItem";
+
+const client = require("contentful").createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+});
 
 export default function Home() {
+  async function fetchEntries() {
+    const entries = await client.getEntries();
+    if (entries.items) return entries.items;
+    console.log(`Error getting Entries from contentful.`);
+  }
+
+  const [postsWork, setPostsWork] = useState([]);
+
+  useEffect(() => {
+    async function getPosts() {
+      const allEntries = await fetchEntries();
+      const workEntries = [];
+      allEntries.map((entry) => {
+        if (entry.sys.contentType.sys.id === "work") {
+          workEntries.push(entry);
+        }
+      });
+      console.log(workEntries);
+      workEntries.sort((a, b) => a.fields.order - b.fields.order);
+      console.log(workEntries);
+      setPostsWork([...workEntries]);
+    }
+    getPosts();
+  }, []);
+
+  if (true) {
+    return (
+      <div style={{ width: "100%" }}>
+        {postsWork.length > 0
+          ? postsWork.map((work) => <WorkItem item={work} />)
+          : null}
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Buck Tower</title>
@@ -35,14 +76,14 @@ export default function Home() {
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
 
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
 
         <link
@@ -55,7 +96,7 @@ export default function Home() {
         <script
           src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
           integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
         <script src="legacy-js/InstagramFeed.min.js"></script>
       </Head>
@@ -66,15 +107,15 @@ export default function Home() {
         </object>
         <h1>Buck Tower</h1>
         <script src="https://use.fontawesome.com/d99d1b5e9b.js"></script>
-        <div class="social-media-icons">
+        <div className="social-media-icons">
           <a href="https://twitter.com/bucktower">
-            <i class="fa fa-twitter"></i>
+            <i className="fa fa-twitter"></i>
           </a>
           <a href="https://github.com/bucktower">
-            <i class="fa fa-github"></i>
+            <i className="fa fa-github"></i>
           </a>
           <a href="https://medium.com/@bucktower">
-            <i class="fa fa-medium"></i>
+            <i className="fa fa-medium"></i>
           </a>
         </div>
         <p>
@@ -85,12 +126,12 @@ export default function Home() {
           . Cooking, music, aviation.
         </p>
         <h2>
-          <i class="fa fa-wrench"></i>
+          <i className="fa fa-wrench"></i>
         </h2>
-        <div class="row center">
+        <div className="row center">
           <br />
           <a
-            class="twitter-timeline"
+            className="twitter-timeline"
             data-width="600"
             data-height="500"
             data-theme="dark"
@@ -101,15 +142,15 @@ export default function Home() {
           <script
             async
             src="https://platform.twitter.com/widgets.js"
-            charset="utf-8"
+            charSet="utf-8"
           ></script>
         </div>
 
         {/* <h2>
-          <i class="fa fa-camera-retro"></i>
+          <i className="fa fa-camera-retro"></i>
           <InstaGrid account="bucktower" numberOfMediaElements={9} />
         </h2>
-        <div class="row center">
+        <div className="row center">
           <br />
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div id="instagram-feed1" style={{ maxWidth: "800px" }}></div>
@@ -118,15 +159,15 @@ export default function Home() {
         <br /> */}
 
         <h2>
-          <i class="fa fa-music"></i>
+          <i className="fa fa-music"></i>
         </h2>
         <iframe
           src="https://open.spotify.com/embed/playlist/7GCHvOJnQTFiVNLVWMBIGt"
           max-width="100%"
           width="1000"
           height="380"
-          frameborder="0"
-          allowtransparency="true"
+          frameBorder="0"
+          allowTransparency={true}
           allow="encrypted-media"
         ></iframe>
         {/* <br />
@@ -143,7 +184,7 @@ export default function Home() {
         ></iframe> */}
 
         <h2>
-          <i class="fa fa-briefcase"></i>
+          <i className="fa fa-briefcase"></i>
         </h2>
         <br />
         <iframe
@@ -158,7 +199,7 @@ export default function Home() {
         ></iframe>
 
         <h2>
-          <i class="fa fa-globe"></i>
+          <i className="fa fa-globe"></i>
         </h2>
         <br />
         <iframe
@@ -175,7 +216,7 @@ export default function Home() {
 
       <footer>
         <h3>
-          <i class="fa fa-twitter"></i>
+          <i className="fa fa-twitter"></i>
         </h3>
         <p id="follow">
           Follow me <a href="https://twitter.com/bucktower">@bucktower</a> for
@@ -184,7 +225,7 @@ export default function Home() {
 
         <h4>
           <a href="https://github.com/bucktower/bucktower.github.com">
-            <i class="fa fa-code"></i>
+            <i className="fa fa-code"></i>
           </a>
         </h4>
       </footer>
