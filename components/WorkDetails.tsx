@@ -30,7 +30,13 @@ export function WorkDetails({
         transition: "all .2s ease-in-out",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <img
           style={{
             maxHeight: 100,
