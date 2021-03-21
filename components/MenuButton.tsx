@@ -12,7 +12,7 @@ export function MenuButton({ menuVisible, setMenuVisible }: any) {
         position: "fixed",
         top: 25,
         right: 25,
-        zIndex: 10,
+        zIndex: 50,
         color: "white",
         backgroundColor: hover
           ? `rgb(${c}, ${c}, ${c}, 0.7)`

@@ -30,7 +30,7 @@ export function Menu({ menuVisible }: any) {
         height: "100vh",
         width: "100%",
         backgroundColor: "#000000",
-        zIndex: 5,
+        zIndex: 49,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

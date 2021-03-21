@@ -22,7 +22,7 @@ export function WorkItem({ workplace, items }: any) {
     <article
       style={{
         backgroundColor: `#${color}`,
-        zIndex: 10 - parseInt(workplace.fields.order),
+        zIndex: 45 - parseInt(workplace.fields.order),
         position: "relative",
       }}
     >
