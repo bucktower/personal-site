@@ -19,7 +19,13 @@ export function WorkItem({ workplace, items }: any) {
   const position = workplace.fields.position;
 
   return (
-    <article style={{ backgroundColor: `#${color}`, position: "relative" }}>
+    <article
+      style={{
+        backgroundColor: `#${color}`,
+        zIndex: 10 - parseInt(workplace.fields.order),
+        position: "relative",
+      }}
+    >
       <WorkDetails
         logo={logo}
         expanded={expanded}
