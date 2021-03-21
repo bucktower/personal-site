@@ -43,7 +43,7 @@ export function Menu({ menuVisible }: any) {
       <div style={{ display: "flex" }}>
         <MenuButton
           title="Swashbuckle Studios"
-          link="https://www.swashbucklestudios.com"
+          link="https://swashbucklestudios.com/"
           icon={<GiGiantSquid />}
         />
       </div>
