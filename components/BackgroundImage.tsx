@@ -7,7 +7,7 @@ export function BackgroundImage({ image, movedUp }: any) {
         backgroundImage: `url(${image.fields.file.url})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        transition: "background-image 1s",
+        transition: "all .2s ease-in-out",
         transform: movedUp && "translateY(-75%) scale(0.8)",
       }}
     />

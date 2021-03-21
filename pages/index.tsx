@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+
 import { WorkItem } from "../components/WorkItem";
+import { MenuButton } from "../components/MenuButton";
+import { Footer } from "../components/Footer";
+import { Menu } from "../components/Menu";
 
 const client = require("contentful").createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -8,37 +12,63 @@ const client = require("contentful").createClient({
 });
 
 export default function Home() {
-  async function fetchEntries() {
-    const entries = await client.getEntries();
+  async function fetchWorkEntries() {
+    const entries = await client.getEntries({ content_type: "work" });
     if (entries.items) return entries.items;
-    console.log(`Error getting Entries from contentful.`);
+    console.error(`Error getting Work Entries from contentful.`);
   }
 
-  const [postsWork, setPostsWork] = useState([]);
+  async function fetchWorkItemsEntries() {
+    const entries = await client.getEntries({ content_type: "workItem" });
+    if (entries.items) return entries.items;
+    console.error(`Error getting Work Item Entries from contentful.`);
+  }
+
+  const [workPosts, setWorkPosts] = useState([]);
+  const [workItems, setWorkItems] = useState({});
+  const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
-    async function getPosts() {
-      const allEntries = await fetchEntries();
+    async function getWorkPosts() {
+      const allEntries = await fetchWorkEntries();
       const workEntries = [];
       allEntries.map((entry) => {
-        if (entry.sys.contentType.sys.id === "work") {
-          workEntries.push(entry);
+        workEntries.push(entry);
+      });
+      workEntries.sort((a, b) => a.fields.order - b.fields.order);
+      setWorkPosts([...workEntries]);
+    }
+    getWorkPosts();
+  }, []);
+
+  useEffect(() => {
+    async function getWorkItems() {
+      const allEntries = await fetchWorkItemsEntries();
+      const workItemEntries = {};
+      allEntries.map((entry) => {
+        const workplace = entry.fields.work.fields.title;
+        if (workplace in workItemEntries) {
+          workItemEntries[workplace].push(entry);
+        } else {
+          workItemEntries[workplace] = [entry];
         }
       });
-      console.log(workEntries);
-      workEntries.sort((a, b) => a.fields.order - b.fields.order);
-      console.log(workEntries);
-      setPostsWork([...workEntries]);
+      setWorkItems(workItemEntries);
     }
-    getPosts();
+    getWorkItems();
   }, []);
 
   if (true) {
     return (
       <div style={{ width: "100%" }}>
-        {postsWork.length > 0
-          ? postsWork.map((work) => <WorkItem item={work} />)
+        {menuVisible && <Menu />}
+        <MenuButton menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
+        {workPosts.length > 0
+          ? workPosts.map((work) => (
+              <WorkItem workplace={work} items={workItems[work.fields.title]} />
+            ))
           : null}
+        <Footer />
       </div>
     );
   }
