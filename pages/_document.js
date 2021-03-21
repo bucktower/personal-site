@@ -23,6 +23,8 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+          <title>Buck Tower</title>
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <body style={{ margin: 0 }}>
           <Main />
