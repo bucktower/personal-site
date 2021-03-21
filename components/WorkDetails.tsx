@@ -56,7 +56,7 @@ export function WorkDetails({
           {position}
         </p>
       )}
-      {expanded && (
+      {items && expanded && (
         <div
           style={{
             display: "flex",
@@ -88,7 +88,9 @@ export function WorkDetails({
           style={{ display: "flex", justifyContent: "center", marginTop: 10 }}
         >
           <Button variant="light" href={link} target="_blank">
-            What is {title}?
+            {title === "Swashbuckle Studios"
+              ? "Check it out"
+              : `What is ${title}?`}
           </Button>
         </div>
       )}
