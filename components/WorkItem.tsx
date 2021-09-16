@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BackgroundImage } from "./BackgroundImage";
 import { WorkDetails } from "./WorkDetails";
 
-export function WorkItem({ workplace, items }: any) {
+export function WorkItem({ workplace, items, isFirst }: any) {
   const [expanded, setExpanded] = useState(false);
 
   const onLogoClicked = () => {
@@ -36,7 +36,11 @@ export function WorkItem({ workplace, items }: any) {
         color={color}
         items={items}
       />
-      <BackgroundImage image={backgroundImage} movedUp={expanded} />
+      <BackgroundImage
+        image={backgroundImage}
+        movedUp={expanded}
+        isFirst={isFirst}
+      />
     </article>
   );
 }

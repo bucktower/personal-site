@@ -64,8 +64,12 @@ export default function Home() {
         {menuVisible && <Menu />}
         <MenuButton menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
         {workPosts.length > 0
-          ? workPosts.map((work) => (
-              <WorkItem workplace={work} items={workItems[work.fields.title]} />
+          ? workPosts.map((work, idx) => (
+              <WorkItem
+                workplace={work}
+                items={workItems[work.fields.title]}
+                isFirst={idx === 0}
+              />
             ))
           : null}
         <Footer />
